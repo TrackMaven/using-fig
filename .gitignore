@@ -1,0 +1,8 @@
+*.pyc
+*.pyo
+*~
+.build
+.DS_Store
+
+elasticsearch/data
+elasticsearch/log

@@ -1,0 +1,28 @@
+web:
+    build: web
+    volumes:
+        - web:/code
+    ports:
+        - "80:5000"
+    links:
+        - es
+        - db
+        - redis
+    command: python app.py
+es:
+    image: dockerfile/elasticsearch
+    volumes:
+        - elasticsearch:/data
+    ports:
+        - "9200:9200"
+        - "9300:9300"
+db:
+    image: orchardup/postgresql
+    ports:
+        - "5432:5432"
+    environment:
+        POSTGRESQL_DB: test_db
+redis:
+    image: trackmaven/redis
+    ports:
+        - "6379:6379"
